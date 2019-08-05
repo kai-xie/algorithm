@@ -96,6 +96,12 @@ void HeapSort<Dtype>::operator()(
 int main(int argc, char* argv[]) {
   // Initialize Google's logging library.
   google::InitGoogleLogging(argv[0]);
+  google::ParseCommandLineFlags(&argc, &argv, true);
+  // GLOG_logtostderr=1;
+  FLAGS_alsologtostderr = true;
+  // FLAGS_colorlogtostderr = true; //输出彩色日志到stderr
+  // FLAGS_v = 4;
+
   // std::vector<int> arr{ 14, 16, 10, 8, 7, 9, 3, 2, 4, 1 };
   std::vector<int> arr{4, 1, 3, 2, 16, 9, 10, 14, 8, 7};
 
@@ -108,8 +114,13 @@ int main(int argc, char* argv[]) {
 
   Show(arr, "main ends");
   // VLOG(INFO) << "ALL ends!";
-  LOG(INFO) << "glog log(info)";
-  LOG(ERROR) << "glog error";
+  LOG(INFO) << "glog log(info), color test: error, warning, ERROR, WARNING";
+  VLOG(1) << "I'm printed when you run the program with --v=1 or higher";
+  VLOG(2) << "I'm printed when you run the program with --v=2 or higher";
+  if (VLOG_IS_ON(2)) {
+    LOG(INFO) << "vlog > 2";
+  }
+  // LOG(ERROR) << "glog error";
   // CHECK(false) << "all ends with glog";
 
   return 0;
