@@ -6,7 +6,8 @@
 
 #include "glog/logging.h"
 
-#include "ch06/heap_sort.h"
+#include "heap_sort.h"
+#include "quick_sort.h"
 #include "utils/utils.h"
 
 template <typename T>
@@ -28,20 +29,26 @@ int main(int argc, char* argv[]) {
   FLAGS_colorlogtostderr = true;  //输出彩色日志到stderr
   // FLAGS_v = 4;
 
-  // std::vector<int> arr{ 14, 16, 10, 8, 7, 9, 3, 2, 4, 1 };
-  std::vector<int> arr{4, 1, 3, 2, 16, 9, 10, 14, 8, 7};
+  ////////////////////// heap sort /////////////////////
+  // // std::vector<int> arr{ 14, 16, 10, 8, 7, 9, 3, 2, 4, 1 };
+  // std::vector<int> arr{4, 1, 3, 2, 16, 9, 10, 14, 8, 7};
+  // PrintVector(arr, "main starts");
+  // // HeapSort<int> hs;
+  // // hs(arr, [](const int& a, const int& b) { return a > b; });
 
-  PrintVector(arr, "main starts");
-  // HeapSort<int> hs;
-  // hs(arr, [](const int& a, const int& b) { return a > b; });
+  // // hs(arr, std::greater<int>());
+  // // hs(arr, std::less<int>());
+  // // hs(arr, Greater<int>);
+  // // hs(arr, Less<int>);
+  // // HeapSort<int>(arr, [](const int& a, const int& b) -> bool { return a <
+  // b; }); HeapSort<int>(arr, std::less<int>());
 
-  // hs(arr, std::greater<int>());
-  // hs(arr, std::less<int>());
-  // hs(arr, Greater<int>);
-  // hs(arr, Less<int>);
-  HeapSort<int>(arr, [](const int& a, const int& b) -> bool { return a < b; });
-  // HeapSort(arr, std::less<int>());
+  ////////////////////// quick sort ////////////////////////
+  std::vector<int> arr{2, 8, 7, 1, 3, 5, 6, 4};
+  // PrintVector(arr, "main starts");
+  QuickSort(arr, 0, arr.size() - 1);
 
+  ////////////////// common codes /////////////////
   PrintVector(arr, "main ends");
 
   VLOG(1) << "I'm printed when you run the program with --v=1 or higher";

@@ -1,28 +1,17 @@
+#include "heap_sort.h"
+
 #include <vector>
 #include <algorithm>    // std::sort
 #include <functional>   // std::greater
 
 #include "gtest/gtest.h"
-
-#include "ch06/heap_sort.h"
-
-class SortingTestBase : public ::testing::Test {
- protected:
-  void SetUp() override {
-    input_int = {4, 1, 3, 2, 16, 9, 10, 14, 8, 7};
-  }
-
-  void TearDown() override {
-    input_int.clear();
-  }
-  std::vector<int> input_int;
-};
+#include "tests/sorting_test_base.h"
 
 class HeapSortTest: public SortingTestBase {};
 
 TEST_F(HeapSortTest, IntTest) {
   std::vector<int> expected_int = input_int;
-  std::sort(expected_int.begin(), expected_int.end());
+  std::sort(expected_int.begin(), expected_int.end(), std::greater<int>());
   // HeapSort<int> hs;
   // hs(input_int, std::greater<int>());
   // hs(input_int, std::less<int>());

@@ -1,4 +1,4 @@
-#include "ch06/heap_sort.h"
+#include "heap_sort.h"
 
 #include <functional>  // std::function
 #include <iostream>
@@ -69,7 +69,7 @@ void HeapSort(std::vector<Dtype>& arr,
   }
 }
 
-// instantiate Heapsort
+// instantiate
 template void HeapSort<int>(std::vector<int>& arr,
                             std::function<bool(const int&, const int&)> comp);
 

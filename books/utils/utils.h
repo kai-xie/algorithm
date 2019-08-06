@@ -3,6 +3,9 @@
 
 #include "glog/logging.h"
 
+// Default log level
+constexpr int lgl = 2;
+
 // template <typename T>
 // void PrintVector(const std::vector<T>& arr, std::string description = "") {
 //   std::cout << description << std::endl;
@@ -12,13 +15,14 @@
 //   std::cout << "END" << std::endl;
 // }
 
+
 template <typename T>
 void PrintVector(const std::vector<T>& arr, std::string description = "") {
-  VLOG(1) << description;
+  VLOG(lgl) << description;
   std::ostringstream vec_view;
   for (int i = 0; i < arr.size(); ++i) {
     vec_view << arr[i] << " -> ";
   }
   vec_view << "END_OF_VECTOR";
-  VLOG(1) << vec_view.str();
+  VLOG(lgl) << vec_view.str();
 }
